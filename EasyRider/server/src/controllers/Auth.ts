@@ -19,6 +19,7 @@ class AuthController implements IController {
 
   initializeRoutes = (): void => {
     this.router.post(this.path, this.login);
+    this.router.post("/", this.login);
     this.router.get(routes.LOGOUT as string, this.logout);
   };
 
