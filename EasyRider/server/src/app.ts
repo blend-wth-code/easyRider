@@ -28,11 +28,8 @@ class App {
   }
 
   private initializeMiddlewares() {
-    this.app.use(
-      cors({
-        origin: '*',
-      })
-    );
+    this.app.use(cors());
+    this.app.options('*', cors());
     this.app.use(cookieParser());
 
     this.app.use(express.static(path.join(__dirname, "../public")));
