@@ -25,12 +25,10 @@ const userSchema = new mongoose.Schema({
   },
   license: {
     number: {
-      type: Number,
-      required: true,
+      type: String,
     },
     images: {
       type: [Buffer],
-      required: true,
     },
   },
   dob: {
@@ -47,7 +45,6 @@ const userSchema = new mongoose.Schema({
   },
   profilePicture: {
     type: String,
-    required: true,
   },
   createdOn: {
     type: Number,
@@ -69,7 +66,7 @@ const userSchema = new mongoose.Schema({
         required: true,
       },
       domainID: {
-        type: Number,
+        type: String,
         required: true,
       },
       startDate: {
@@ -78,7 +75,6 @@ const userSchema = new mongoose.Schema({
       },
       endDate: {
         type: Number,
-        required: true,
       },
       images: {
         type: [Buffer],
@@ -86,39 +82,45 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
-  car: [
-    {
-      id: {
-        type: String,
-        required: true,
-        default: uuidv4(),
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      model: {
-        type: String,
-        required: true,
-      },
-      purchasedOn: {
-        type: Number,
-        required: true,
-      },
-      images: {
-        type: [Buffer],
-        required: true,
-      },
-      type: {
-        type: String,
-        required: true,
-      },
-      plateNo: {
-        type: String,
-        required: true,
-      },
+  car: {
+    type: mongoose.Schema.Types.Mixed,
+    id: {
+      type: String,
+      default: uuidv4(),
     },
-  ],
+    name: {
+      type: String,
+      required: true,
+    },
+    model: {
+      type: String,
+      required: true,
+    },
+    purchasedOn: {
+      type: Number,
+      required: true,
+    },
+    images: {
+      type: [Buffer],
+      required: true,
+    },
+    carType: {
+      type: String,
+      required: true,
+    },
+    plateNo: {
+      type: String,
+      required: true,
+    },
+  },
+  location: {
+    lat: {
+      type: Number,
+    },
+    long: {
+      type: Number,
+    },
+  },
 });
 
 const UserDB: mongoose.Model<User, UserModel> = mongoose.model<User, UserModel>(

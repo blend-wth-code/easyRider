@@ -12,11 +12,16 @@ interface User extends mongoose.Document {
   };
   dob: number;
   password: string;
+  confirmPassword: string;
   phoneNumber: string;
-  locale: string;
-  profilePicture: Buffer;
+  locale?: string;
+  profilePicture?: Buffer;
   domain: Domain[];
-  car?: Car[];
+  car?: Car;
+  location: {
+    lat: number;
+    long: number;
+  };
 }
 
 interface Domain {
@@ -25,7 +30,7 @@ interface Domain {
   domainID: string;
   startDate: number;
   endDate?: number;
-  images: Buffer[];
+  images?: Buffer[];
 }
 
 export default User;
