@@ -5,7 +5,11 @@
   "main": "src/index.ts",
   "scripts": {
     "start:dev": "npx nodemon",
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./build && tsc",
+    "vercel:build": "echo hello vercel"
+  },
+  "engines":{
+    "node": "18.x"
   },
   "keywords": [],
   "author": "Rama Chandar Rao Shambu",
